@@ -12,7 +12,7 @@
     
 import sys
 from time import time
-sys.path.append("../tools/")
+sys.path.append("./tools/")
 from email_preprocess import preprocess
 
 
@@ -22,10 +22,25 @@ from email_preprocess import preprocess
 features_train, features_test, labels_train, labels_test = preprocess()
 
 
-##############################################################
+##############################################################s
 # Enter Your Code Here
 
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score
 
+clf = GaussianNB()
+
+t0 = time()
+clf.fit(features_train, labels_train) # Train
+print("Training Time:", round(time()-t0, 3), "s")
+
+t0 = time()
+pred = clf.predict(features_test) # Predict
+print("Predicting Time:", round(time()-t0, 3), "s")
+
+acc = accuracy_score(pred, labels_test)
+
+print("Accuracy Score:", acc)
 
 ##############################################################
 
