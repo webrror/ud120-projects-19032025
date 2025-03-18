@@ -29,3 +29,15 @@ The code in this repo has been upgraded from Python 2 to Python 3 by [Siddharth 
 
 ### Path Note
 According to your `ud120-projects` location you may have to change the path for every `sys.path.append(os.path.abspath(("../tools/")))` to `sys.path.append(os.path.abspath(("./tools/")))` (Basically '../' to './' for all of the files path) or vice-versa in your `.py` files.
+
+### Outputs
+
+#### Lesson 2 (Naive Bayes)
+
+```
+No. of Chris training emails :  7936
+No. of Sara training emails :  7884
+Training Time: 0.993 s
+Predicting Time: 0.177 s
+Accuracy Score: 0.9732650739476678
+```
