@@ -24,24 +24,31 @@ try:
 except:
     print("You should install sklearn before continuing")
 
-print("Downloading the Enron dataset (this may take a while)")
-print("To check on progress, you can cd up one level, then execute <ls -lthr>")
-print("Enron dataset should be last item on the list, along with its current size")
-print("Download will complete at about 1.82 GB")
+print("Download the Enron dataset")
+print("From this hugging face repo: https://huggingface.co/datasets/SnowZeng/enron_mail/resolve/main/enron_mail_20150507.tar.gz")
+print("Much faster to download")
 
-import requests
-url = "https://www.cs.cmu.edu/~./enron/enron_mail_20150507.tar.gz"
-filename = "../enron_mail_20150507.tar.gz"
-with open(filename, "wb") as f:
-    r = requests.get(url)
-    f.write(r.content)
-print("Download Complete!")
+# If you want to download from the original source, uncomment the following
+# import requests
+# url = "https://www.cs.cmu.edu/~./enron/enron_mail_20150507.tar.gz"
+# filename = "../enron_mail_20150507.tar.gz"
+# with open(filename, "wb") as f:
+#     r = requests.get(url)
+#     f.write(r.content)
+# print("Download Complete!")
 
 print("Unzipping Enron dataset (This may take a while)")
 import tarfile
-tfile = tarfile.open("../enron_mail_20150507.tar.gz")
-tfile.extractall(".")
-tfile.close()
+from tqdm import tqdm # for progress bar
+
+# Function to show progress during extraction
+def extract_with_progress(tar_file, path="."):
+    with tarfile.open(tar_file, "r:gz") as tar:
+        total_members = len(tar.getmembers())
+        for member in tqdm(tar.getmembers(), total=total_members, desc="Extracting"):
+            tar.extract(member, path)
+
+# Unzipping the dataset with progress bar
+extract_with_progress("../enron_mail_20150507.tar.gz")
 
 print("You're ready to go!")
-

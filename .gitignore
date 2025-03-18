@@ -1,7 +1,8 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
 *.pyc
-enron_mail_20110402.tgz
-enron_mail_20110402/
-enron_mail_20150507.tgz
+enron_mail_20150507.tar.gz
+enron_mail_20150507/
+enron_mail_20150507.tar
 maildir/
 text_learning/your_word_data.pkl
 text_learning/your_email_authors.pkl
@@ -11,3 +12,7 @@ my_feature_list.pkl
 .DS_Store
 __pycache__
 venv/
+pyvenv.cfg
+Scripts/
+Lib/
+share/
